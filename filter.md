@@ -2,6 +2,23 @@
 
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
+
+## t1q2
+- $の要否？
+https://stackoverflow.com/questions/40223901/how-does-symbol-working-when-selecting-columns-from-dataframe
+
+```
+// $ : It comes from StringToColumn implicit inner class in SQLImplicits (which is implemented by the implicits object).
+
+val dataFile = spark.read.format("csv").load("/user/testdata/xx").
+select(col("_c2").as("xxx"),col("_c3").as("xxx")).
+filter($"status"==="COMPLETE").
+groupBy("customer_id").count.where("count > 4").
+join(xxx,"customer_id").sort("count").
+write.mode("overwrite").json("/user/output")
+
+```
+
 ## t1q7
 - LIKE
 - 複数条件(AND)
