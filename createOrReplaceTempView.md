@@ -26,7 +26,8 @@ select(col("_c0").as("prodId"),col("_c4").as("order_total").cast(DoubleType))
 
 // join
 orddf.join(proddf,orddf("prodId")===proddf("pId")).createOrReplaceTempView("joined")
-val filtDF = spark.sql("select concat("prodId,':',sum(order_total)) from joined group by prodId order by sum(order_total) desc limit 10")
+val filtDF = spark.sql("select concat("prodId,':',sum(order_total)) 
+                        from joined group by prodId order by sum(order_total) desc limit 10")
 
 filtDF.write.mode("overwrite").format("text").save("/user/output")
 
