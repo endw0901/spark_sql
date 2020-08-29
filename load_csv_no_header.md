@@ -1,4 +1,4 @@
-# write format
+# ヘッダ無しCSV
 
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
