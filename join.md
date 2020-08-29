@@ -15,3 +15,10 @@ join(xxx,"customer_id").sort("count").
 write.mode("overwrite").json("/user/output")
 
 ```
+
+## t1q8
+- join 列名が違う時
+
+```
+val result = groupDF.join(cus, $"order_customer_id" === $"customer_id").select($"customer_fname",$"customer_lname",$"count",$"customer_status")
+```
