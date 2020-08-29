@@ -26,7 +26,8 @@ val prodDF = spark.read.textFile("/user/testdata/xxxx/").map(x => x.split(",")).
 val ordDF  = spark.read.textFile("/user/testdata/xxxx/").map(x => x.split(",")).map(c => Orders(o(0).toInt,o(4).toFloat))
 
 ordDF.join(prodDF,ordDF("prodId")===prodDF("pId")).createOrReplaceTempView("joined")
-val filtDF = spark.sql("select concat(prodId,'|',sum(order_total)) from joined group by prodId order by sum(order_total) desc limit 10")
+val filtDF = spark.sql("select concat(prodId,'|',sum(order_total)) 
+             from joined group by prodId order by sum(order_total) desc limit 10")
 
 filtDF.write.mode("overwrite").format("text").save("/user/output")
 
