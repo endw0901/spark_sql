@@ -4,8 +4,26 @@ https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practi
 
 ## t1q1
 
+- write parquet
+
 ```
 val dataFile = spark.read.format("avro").load("/user/testdata/aaaafile")
 dataFile.select("aaa","aaaa").write.option("compression","gzip").parquet("/user/output")
 ```
 
+## t1q2
+
+- write json
+
+```
+xxx.write.json("/user/output")
+```
+
+
+## t1q3
+
+- write text
+
+```
+datadf.write.mode("overwrite").option("compression","gzip").format("text").save("/user/output")
+```
