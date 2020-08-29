@@ -6,6 +6,7 @@ https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practi
 ## t1q2
 - $の要否？
 https://stackoverflow.com/questions/40223901/how-does-symbol-working-when-selecting-columns-from-dataframe
+- 文字列Stringを列column名称として認識するということ
 
 ```
 // $ : It comes from StringToColumn implicit inner class in SQLImplicits (which is implemented by the implicits object).
