@@ -11,6 +11,14 @@ val dataFile = spark.read.format("avro").load("/user/testdata/aaaafile")
 dataFile.select("aaa","aaaa").write.option("compression","gzip").parquet("/user/output")
 ```
 
+## t1q6
+
+- write parquet
+
+```
+.option("compression","uncompressed").parquet(xxxxx
+```
+
 ## t1q2
 
 - write json
