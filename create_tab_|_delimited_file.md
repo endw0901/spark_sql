@@ -29,3 +29,22 @@ val dataDF = spark.sql("select p.product_category_id, p.product_name, p.product_
 filter("product_price_rank=1").
 map(x => x.mkString("|")
 ```
+
+
+https://www.udemy.com/course/cca-175-spark-and-hadoop-developer-practice-tests-a
+
+## t1q4
+
+- 名 + 空白 + 姓  ※空白を区切り文字として文字列を連結
+
+```
+val datadf = spark.read.option("inferSchema",true).option("delimiter","\t").csv("/user/testdata/Bt1q4.txt").toDF("fname","lname","state")
+datadf.createOrReplaceTempView("view1")
+
+val result = spark.sql("""
+SELECT Concat_ws(' ', fname, lname) name from view1 where state = 'CA'
+""")
+
+result.write.text("/user/output")
+
+```
