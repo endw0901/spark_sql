@@ -32,3 +32,21 @@ val filtDF = spark.sql("select concat("prodId,':',sum(order_total))
 filtDF.write.mode("overwrite").format("text").save("/user/output")
 
 ```
+
+https://www.udemy.com/course/cca-175-spark-and-hadoop-developer-practice-tests-a
+
+## t1q4
+
+- スキーマ推測(inferSchema)からtoDFでdataframe作成⇒view
+
+```
+val datadf = spark.read.option("inferSchema",true).option("delimiter","\t").csv("/user/testdata/Bt1q4.txt").toDF("fname","lname","state")
+datadf.createOrReplaceTempView("view1")
+
+val result = spark.sql("""
+SELECT Concat_ws(' ', fname, lname) name from view1 where state = 'CA'
+""")
+
+result.write.text("/user/output")
+
+```
