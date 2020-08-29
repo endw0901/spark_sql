@@ -27,3 +27,12 @@ xxx.write.json("/user/output")
 ```
 datadf.write.mode("overwrite").option("compression","gzip").format("text").save("/user/output")
 ```
+
+
+## t1q4
+
+- write avro
+
+```
+cusdf.filter("city='Tokyo'").write.option("compression","deflate").format("avro").save("/user/output")
+```
