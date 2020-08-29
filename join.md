@@ -22,3 +22,25 @@ write.mode("overwrite").json("/user/output")
 ```
 val result = groupDF.join(cus, $"order_customer_id" === $"customer_id").select($"customer_fname",$"customer_lname",$"count",$"customer_status")
 ```
+
+
+## t2q7
+- テーブル名＋列名それぞれ指定してjoin
+```
+import org.apache.spark.sql.types._
+
+// dataframe作成
+val proddf = spark.read.csv("/user/testdata/xxx/").
+select(col("_c0").as("pId"),col("_c2").as("name"))
+
+val orddf = spark.read.csv("/user/testdata/xxx/").
+select(col("_c0").as("prodId"),col("_c4").as("order_total").cast(DoubleType))
+
+// join
+orddf.join(proddf,orddf("prodId")===proddf("pId")).createOrReplaceTempView("joined")
+val filtDF = spark.sql("select concat("prodId,':',sum(order_total)) 
+                        from joined group by prodId order by sum(order_total) desc limit 10")
+
+filtDF.write.mode("overwrite").format("text").save("/user/output")
+
+```
