@@ -32,3 +32,19 @@ val filtDF = spark.sql("select concat(prodId,'|',sum(order_total))
 filtDF.write.mode("overwrite").format("text").save("/user/output")
 
 ```
+
+
+https://www.udemy.com/course/cca-175-spark-and-hadoop-developer-practice-tests-a
+
+
+## t1q6
+- inferSchemaでdataframe作成
+- カンマ区切りtextファイル = csvで読める
+
+```
+val datadf = spark.read.option("inferSchema",true).csv("/user/testdata/Bt1q2.txt").toDF("pid","catId","name")
+
+val datadf2 = datadf.map(x => x.mkString("\t"))
+datadf2.write.mode("overwrite").option("compression","lz4").text("/user/output")
+
+```
