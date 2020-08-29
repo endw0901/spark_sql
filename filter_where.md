@@ -30,3 +30,10 @@ filter("order_date LIKE '2014-03%' and order_status='PENDING_PAYMENT'").
 groupBy($"order_date").count.
 write.mode("overwrite").format("json").save("/user/output")
 ```
+
+## t2q1
+- where 
+
+```
+val dataDF = ordDF.join(itemsumDF,"ordId").where("order_amount > 200")
+```
