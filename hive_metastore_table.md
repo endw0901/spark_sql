@@ -2,7 +2,6 @@
 
 https://www.udemy.com/course/cca-175-spark-and-hadoop-developer-practice-tests-a
 
-
 # Bt2q1
 - partitionのコンフィグ設定
 - partitionBy + format("hive") + saveAsTable
@@ -15,5 +14,24 @@ spark.sqlContext.setConf("hive.exec.dynamic.partition.mode","nonstrict")
 
 datadf.write.partitionBy("name").format("hive").saveAsTable("default.category_partitioned")
 
+```
+
+# Bt2q3
+- 事前にtable作成してからsaveAsTable
+- parquet形式
+
+```
+val datadf = spark.read.option("inferSchema",true).csv("/user/testdata/Bt1q2.txt").toDF("pid","depid","name")
+
+spark.sql("""
+CREATE TABLE IF NOT EXISTS default.categories
+(
+category_id INT,
+category_name STRING
+)
+stored AS parquet
+""")
+
+datadf.select("pid","name").write.mode("overwrite").saveAsTable("default.categories")
 ```
 
