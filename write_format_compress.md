@@ -2,6 +2,13 @@
 
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
+## 注意(圧縮⇒jsonか、json⇒圧縮か)
+- output should be json format and compressed with snappy compression
+- この場合、先に圧縮してからjson形式で格納する
+```
+result.write.option("compression","snappy").json("/user/output")
+```
+
 ## t1q1
 
 - write parquet
