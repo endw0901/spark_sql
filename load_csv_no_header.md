@@ -2,6 +2,9 @@
 
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
+- type cast型変換を考えると、case classを覚えたほうがいい(dataframe作成・createOrReplaceTempViewでspark sqlも使える)
+- textFile + mapのsplitよりは、csvで読んだ方が簡単
+
 ## t1q2
 
 ```
