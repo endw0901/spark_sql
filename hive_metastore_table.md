@@ -35,3 +35,7 @@ stored AS parquet
 datadf.select("pid","name").write.mode("overwrite").saveAsTable("default.categories")
 ```
 
+
+# Bt2q6
+- metastore tableからread・・・普通にspark sqlのfromでdefault.xxxxで読むだけ（データベース：default、テーブル：xxx)
+
