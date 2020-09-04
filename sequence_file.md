@@ -11,6 +11,12 @@ val datadf = spark.read.csv("/user/testdata/Bt1q2.txt")
 datadf.rdd.map(args => (args(0).toString,args.mkString(","))).saveAsSequenceFile("/user/output/solution")
 ```
 
+```
+val datafile = spark.read.parquet("/user/input")
+
+datafile.rdd.map(x => (x(0).toString,x.mkString("|"))).saveAsSequenceFile("/user/output")
+```
+
 # Bt2q5
 - sequencefileの読み込み
 
