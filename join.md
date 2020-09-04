@@ -3,6 +3,7 @@
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
 - sparkのjoinは、単位は左テーブルのinner joinになるため注意
+- https://acadgild.com/blog/what-join-apache-spark
 
 ```
 例
