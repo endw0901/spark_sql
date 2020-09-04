@@ -2,6 +2,28 @@
 
 https://www.udemy.com/course/complete-cca-175-hadoop-spark-developer-with-practice-test
 
+- sparkのjoinは、単位は左テーブルのinner joinになるため注意
+
+```
+例
+顧客(顧客id)
+1
+2
+3
+
+注文（注文id,顧客id)
+10,1
+11,1
+12,1
+13,3
+
+// join結果、単位は顧客ユニークで、注文2の顧客はいないので除かれる
+顧客.join(注文,"顧客id") 
+結果：
+1
+3
+
+```
 
 ## t1q2
 - join 列名が同じとき
